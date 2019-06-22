@@ -1,0 +1,32 @@
+{
+  "name": "pragmacare",
+  "version": "1.0.0",
+  "description": "## Use cases",
+  "main": "index.js",
+  "scripts": {
+    "dev": "rollup -c -w",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manuel-m/pragmacare.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/manuel-m/pragmacare/issues"
+  },
+  "homepage": "https://github.com/manuel-m/pragmacare#readme",
+  "devDependencies": {
+    "rollup": "^1.16.2",
+    "rollup-plugin-run": "^1.1.0"
+  },
+  "dependencies": {
+    "axios": "^0.19.0",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "express-session": "^1.16.2",
+    "helmet": "^3.18.0",
+    "memorystore": "^1.6.1"
+  }
+}
