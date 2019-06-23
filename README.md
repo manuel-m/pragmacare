@@ -1,6 +1,159 @@
-# Pragmatask
+# Pragmacare
 
 ## Use cases
+- Booking
+  - Schedule an appointment (propose first free slot)
+  - Re-schedule an appointment
+  - Ensure an appointment
+  - Cancel an appointment (customer)
+  - Cancel an appointment (teammate)
+- Planning
+  - Display teammates schedule (all, filtered)
+  - Notify teammates on re-schedule
+- Inventory
+  - Display inventory
+  - Display forecasting inventory, inventory coverage
+  - Inventory alerts
+  - Import/export inventory
+  - Manage supply categories
+- Catalogue
+  - Proposed services record edit
+- Room
+  - Rooms record edit
+- Customer
+  - Customer record edit (RGPD)
+  - Search, display Client history
+  - Import/export customers records
+- Provider
+  - Search / Provider record edit
+- Teammate
+  - Teammate record edit (info, skills)
+  - Teammate vacance edit
+- Job tracking
+  - Edit report (duration, used supplies)
+- Statistics
+
+## Open points
+
+- No accounting
+- No restricted area according to teammate role
+
+
+## Global configuration
+
+```
+{
+  location:{lat,long}
+  scheduling:{
+    max_schedule_days
+  } 
+}
+```
+
+## Entities
+
+### Teammate
+```
+{
+  login, passwd
+  phone, email
+  role
+  skills
+  workings_hours
+}
+```
+
+### Skill
+
+```
+{
+  name
+  desc
+}
+```
+
+### Vacance
+```
+{
+  teammate
+  date_from, date_to
+}
+```
+
+### Customer
+
+```
+{
+  lastname, surname
+  gender
+  address, city, country, zipcode
+  birth_date
+  login, passwd
+}
+```
+
+### Task 
+
+```
+{
+  category
+  code, name, desc  
+  duration
+  skills
+  required_supplies:[{supply, count}]
+  pricing
+}
+```
+
+### Supply
+
+```
+{
+  code, category
+  name, desc
+  physical_count
+}
+
+```
+
+### Job
+
+```
+{
+  teammate
+  room
+  task
+  title
+  desc
+  time_from, time_to
+  created_at, modified_at
+  created_by, modified_by
+  cancellation_until
+  has_confirmed_at
+  status
+  used_supplies
+  actual_duration
+}
+```
+
+### Room 
+
+```
+{
+  name
+  desc  
+  created_at
+  modified_at
+  created_by
+  modified_by
+}
+```
+
+### Mail
+
+### Notification
+
+## Uses case details
 
 ### Schedule an appointment
 - Display available task categories
@@ -21,141 +174,14 @@
 
 - Send a SMS / mail
 - Set response update or cancel appointment
+- Booking
 
-### Cancel an appointment (user)
+### Cancel an appointment (customer)
 
-### Cancel an appointment (doctor)
+### Cancel an appointment (teammate)
+- Planning### Display teammat schedule- Display currsent Inventory  Display teammates scheduleInventory
+### Display forecasting Inventory- Inventory alerts
 
-### Show planning
+### Client record edit (RGPD)
 
-## Global configuration
-
-```
-{
-  location:{
-    lat: 0
-    long: 0
-  }
-  scheduling:{
-    max_schedule_days: 0
-  } 
-}
-```
-
-## Entities
-
-### Resource
-```
-{
-  id: 0
-  login: string
-  passwd: string
-  phone: email
-  email: string
-  role: enum
-  skills: [enum]
-  workings_hours: []
-}
-```
-
-### Vacance
-```
-{
-  id: 0
-  resource_id: 0
-  date_from: date
-  date_to: date
-}
-```
-
-### User
-
-```
-{
-  id: 0
-  lastname: string
-  surname: string
-  gender: string
-  address: string
-  city: string
-  country: string
-  zipcode: string
-  birth_date: 0
-  login: string
-}
-```
-
-### Task 
-
-```
-{
-  id:0
-  category:enum
-  desc:string
-  duration: 0
-  skills: [enum]
-  contact_id:0
-}
-```
-
-### Job
-
-```
-{
-  id: 0
-  user_id: 0
-  room_id: 0
-  task_id: 0  
-  title: string
-  desc: string
-  time_from: date
-  time_to: date
-  created_at: date
-  modified_at: date
-  created_by: date
-  modified_by: date
-  cancellation_until: 0
-  has_confirmed_at: date
-  status: enum
-}
-```
-
-### Room 
-
-```
-{
-  id: 0
-  name: string
-  desc: string  
-  created_at: date
-  modified_at: date
-  created_by: date
-  modified_by: date
-}
-```
-
-### Mail
-
-### Notification
-
-```
-{
-  contentText: string
-  contentHtml: string
-  subject: string
-  schedule: {}
-  transports: [
-    {
-      type: mail
-      address: string
-      id: 0
-    }
-  ]
-  data: {}
-  done: true
-  id: 0
-  user_id: 0
-  appointment_id: 0
-}
-```
-
+### Display Client history
